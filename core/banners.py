@@ -1,5 +1,5 @@
 # Written by: Karim shoair - D4Vinci ( Dr0p1t-Framework )
-from core.color import set_colors, print_banner
+from core.color import set_colors, print_banner, G, Y, B ,R, W, M, C
 import random
 import os
 global banners, info
@@ -43,9 +43,9 @@ banners = [
 ]
 
 info = "\tAuthor  : Karim Shoair ( D4Vinci )\n\tVersion : {}  Codename : {}".format(
-    open(os.join(os.path.dirname(__file__), 'version.txt'),
+    open(os.path.join(os.path.dirname(__file__), 'version.txt'),
          "r").read().strip(),
-    open(os.join(os.path.dirname(__file__), 'codename.txt'),
+    open(os.path.join(os.path.dirname(__file__), 'codename.txt'),
          "r").read().strip())
 
 
